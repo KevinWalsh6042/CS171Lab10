@@ -133,17 +133,17 @@ public static void Q3()
         int turns = 0;
 
         int maxdamage = 8;
-        int enemyArmour = 1; //2 halfs damage, 3 == 1/3 damage...
+        int enemyArmour = 12;
         int buffValue = 5;
 
         boolean buff = false;
         while (true) {
 
             boolean doAttack = false;
-            boolean check2 = false;
-            while (!check2) {
+            boolean validAttack = false;
+            while (!validAttack) {
                 next = scan.nextLine();
-                check2 = true;
+                validAttack = true;
                 switch (next) {
                     case "A", "a":
                         doAttack = true;
@@ -154,7 +154,7 @@ public static void Q3()
                         break;
                     default:
                         System.out.println("Invalid input");
-                        check2 = false;
+                        validAttack = false;
                 }
             }
 
@@ -169,7 +169,7 @@ public static void Q3()
                 } else {
                     System.out.println();
                 }
-                if (attackRoll >= 12) {
+                if (attackRoll >= enemyArmour) {
                     damage = rng.nextInt(maxdamage) + 1;
                     damage += rng.nextInt(maxdamage) + 1;
                     if(buff) {
@@ -184,7 +184,7 @@ public static void Q3()
                         System.out.print(" (buffed attack)");
                     }
 
-                    enemyHP -= damage/enemyArmour;
+                    enemyHP -= damage;
                     System.out.println("\nEnemy HP: " + Math.max(0, enemyHP));
 
                 } else {
