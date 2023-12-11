@@ -99,7 +99,7 @@ public static void Q3()
     int counter = 0;
     for (int i = 0; i < n; i++) 
     {
-        if (i > 2)
+        if (i >= 2)
         {
             boolean check = true;
 
