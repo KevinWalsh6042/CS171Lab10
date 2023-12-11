@@ -130,9 +130,9 @@ public static void Q3()
         System.out.println("Q4: Your damage is 2-16 (2d8)");
 
         int enemyHP = 100;
-        int a = 0;
+        int turns = 0;
 
-        boolean check = false;
+        boolean buff = false;
         while (true) {
 
             boolean doAttack = false;
@@ -145,7 +145,7 @@ public static void Q3()
                         doAttack = true;
                         break;
                     case "B", "b":
-                        check = true;
+                        buff = true;
                         System.out.println("Buffing! +5 to your next attack roll and damage");
                         break;
                     default:
@@ -155,11 +155,11 @@ public static void Q3()
             }
 
             if (doAttack) {
-                a++;
+                turns++;
                 int attackRoll = rng.nextInt(20) + 1;
                 int damage = 0;
                 System.out.print("You rolled: " + attackRoll);
-                if(check) {
+                if(buff) {
                     attackRoll += 5;
                     System.out.print(" + 5 (buff active)\n");
                 } else {
@@ -168,15 +168,15 @@ public static void Q3()
                 if (attackRoll >= 12) {
                     damage = rng.nextInt(8) + 1;
                     damage += rng.nextInt(8) + 1;
-                    if(check) {
+                    if(buff) {
                         damage += 5;
                     }
-                    if (attackRoll == 20 || (check && attackRoll == 20 + 5)) {
+                    if (attackRoll == 20 || (buff && attackRoll == 20 + 5)) {
                         damage *= 2;
                         System.out.print("Critical hit! ");
                     }
                     System.out.print("You dealt " + damage + " damage");
-                    if(check) {
+                    if(buff) {
                         System.out.print(" (buffed attack)");
                     }
                     enemyHP -= damage;
@@ -186,9 +186,9 @@ public static void Q3()
                     System.out.println("Miss");
                 }
 
-                check = false;
+                buff = false;
                 if (enemyHP <= 0) {
-                    System.out.println("Enemy died in " + a + " turns");
+                    System.out.println("Enemy died in " + turns + " turns");
                     scan.close();
                     return;
                 }
