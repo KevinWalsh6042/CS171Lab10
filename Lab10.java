@@ -124,17 +124,19 @@ public static void Q3()
     public static void Q4() {
         Random rng = new Random();
 
-        String next;
-        System.out.println("Q4: Let's play a game. Type \"A\" to attack, \"B\" to buff your next attack. Kill the enemy to win!");
-        System.out.println("Q4: You must roll higher than the enemy armor class (12) to hit. Roll 20 for a critical hit!");
-        System.out.println("Q4: Your damage is 2-16 (2d8)");
-
         int enemyHP = 100;
         int turns = 0;
 
         int maxdamage = 8;
         int enemyArmour = 12;
         int buffValue = 5;
+        String next;
+
+        System.out.println("Q4: Let's play a game. Type \"A\" to attack, \"B\" to buff your next attack. Kill the enemy to win!");
+        System.out.println("Q4: You must roll higher than the enemy armor class "+enemyArmour+" to hit. Roll 20 for a critical hit!");
+        System.out.println("Q4: Your damage is 2-"+(maxdamage*2));
+
+
 
         boolean buff = false;
         while (true) {
