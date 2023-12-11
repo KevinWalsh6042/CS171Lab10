@@ -132,6 +132,10 @@ public static void Q3()
         int enemyHP = 100;
         int turns = 0;
 
+        int maxdamage = 8;
+        int enemyArmour = 1; //2 halfs damage, 3 == 1/3 damage...
+        int buffValue = 5;
+
         boolean buff = false;
         while (true) {
 
@@ -146,7 +150,7 @@ public static void Q3()
                         break;
                     case "B", "b":
                         buff = true;
-                        System.out.println("Buffing! +5 to your next attack roll and damage");
+                        System.out.println("Buffing! "+ buffValue +" to your next attack roll and damage");
                         break;
                     default:
                         System.out.println("Invalid input");
@@ -161,13 +165,13 @@ public static void Q3()
                 System.out.print("You rolled: " + attackRoll);
                 if(buff) {
                     attackRoll += 5;
-                    System.out.print(" + 5 (buff active)\n");
+                    System.out.print(" + "+buffValue+" (buff active)\n");
                 } else {
                     System.out.println();
                 }
                 if (attackRoll >= 12) {
-                    damage = rng.nextInt(8) + 1;
-                    damage += rng.nextInt(8) + 1;
+                    damage = rng.nextInt(maxdamage) + 1;
+                    damage += rng.nextInt(maxdamage) + 1;
                     if(buff) {
                         damage += 5;
                     }
@@ -179,7 +183,8 @@ public static void Q3()
                     if(buff) {
                         System.out.print(" (buffed attack)");
                     }
-                    enemyHP -= damage;
+
+                    enemyHP -= damage/enemyArmour;
                     System.out.println("\nEnemy HP: " + Math.max(0, enemyHP));
 
                 } else {
