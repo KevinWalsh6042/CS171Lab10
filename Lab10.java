@@ -82,7 +82,7 @@ public class Lab10 {
         
         
 
-        if(num2 > 0 && num2 < 12)
+        if(num2 > 0 && num2 < 13)
         {
             System.out.println(months[num2-1]);
             return;
