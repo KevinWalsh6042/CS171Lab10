@@ -55,6 +55,7 @@ public class Lab10 {
         System.out.println("Enter the current month: (1-12)");
         int num2 = Integer.parseInt(scan.nextLine());
         
+        String[] months = {"January","February","March","April","May","June","July","August","September","October","November","December" };
     
         if (num % 10  == 1)
         {
@@ -79,34 +80,16 @@ public class Lab10 {
             return;
         }
         
+        
 
-        if(num2 == 1) {
-            System.out.println("January");
-        } else if (num2 == 2) {
-            System.out.println("February");
-        } else if (num2 == 3) {
-            System.out.println("March");
-        } else if (num2 == 4) {
-            System.out.println("April");
-        } else if (num2 == 5) {
-            System.out.println("May");
-        } else if (num2 == 6) {
-            System.out.println("June");
-        } else if (num2 == 7) {
-            System.out.println("July");
-        } else if (num2 == 8) {
-            System.out.println("Augst");
-        } else if (num2 == 9) {
-            System.out.println("September");
-        } else if (num2 == 10) {
-            System.out.println("October");
-        } else if (num2 == 11) {
-            System.out.println("November");
-        } else if (num2 == 12) {
-            System.out.println("December");
-        } else {
-            System.out.println("Invalid month");
+        if(num2 < 1 || num2 > 12)
+        {
+            System.out.println(months[num2-1]);
+            return;
         }
+        System.out.println("Invalid month");
+        
+
     }
 
 public static void Q3() {
